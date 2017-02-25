@@ -1,0 +1,48 @@
+* !https://anrisoftware.com/projects/attachments/download/217/apache2.0-small.gif! (© 2016 Erwin Müller)
+* "Source github.com":https://github.com/devent/apt_cacher_docker
+* @git@anrisoftware.com:apt_cacher_docker.git@
+* @git@github.com:devent/apt_cacher_docker.git@
+
+h1. Description
+
+Installs the apt-cacher as a Docker container locally.
+After the installation, a Apt-proxy will be available at @http://localhost:3142@
+The default cache directory will be @/var/cache/apt-cacher@
+
+h1. Usage
+
+h2. Installation
+
+Installs the apt-cacher as a Docker container locally.
+
+<pre>
+make
+</pre>
+
+Removes the apt-cacher container and all files.
+
+<pre>
+make clean
+</pre>
+
+h2. Apt-Proxy
+
+Add the Apt-proxy to your server.
+
+<pre>
+nano /etc/apt/apt.conf.d/01proxy
+</pre>
+
+<pre>
+Acquire::http::Proxy "http://<address>:3142";
+</pre>
+
+h3. Variables
+
+|_.Variable|_.Default|_.Description|
+|PORTS|-p 3142:3142|The port that should be available for the proxy.|
+|CACHE_DIR|/var/cache/apt-cacher|The cache directory.|
+
+h2. License
+
+Licensed under a "Apache 2.0 License.":http://www.apache.org/licenses/LICENSE-2.0 Permissions beyond the scope of this license may be available at @erwin.mueller@deventm.org@ or @erwin.mueller@nttdata.com@.
